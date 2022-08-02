@@ -9,3 +9,9 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Company {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  cnpj String @unique
+  name String
+}
