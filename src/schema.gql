@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CompanyEntity {
+  id: String!
+  cnpj: String!
+  name: String!
+}
+
+type Query {
+  allCompanies: [CompanyEntity!]!
+  company(id: String!): CompanyEntity!
+}
+
+type Mutation {
+  createCompany(createCompanyInput: CreateCompanyInput!): CompanyEntity!
+  updateCompany(updateCompanyInput: UpdateCompanyInput!): CompanyEntity!
+  removeCompany(id: String!): CompanyEntity!
+}
+
+input CreateCompanyInput {
+  name: String!
+  cnpj: String!
+}
+
+input UpdateCompanyInput {
+  name: String
+  cnpj: String
+
+  """Company ID"""
+  id: String!
+}
