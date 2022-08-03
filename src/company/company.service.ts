@@ -1,10 +1,8 @@
 import {
-  BadRequestException,
   ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { isMongoId } from 'class-validator';
 import { CreateCompanyInput } from './dto/create-company.input';
 import { UpdateCompanyInput } from './dto/update-company.input';
 import { CompanyEntity } from './entities/company.entity';
@@ -30,12 +28,6 @@ export class CompanyService {
   }
 
   async findOne(id: string) {
-    const isObjectId = isMongoId(id);
-
-    if (!isObjectId) {
-      throw new BadRequestException('Mongo ID is invalid');
-    }
-
     const company = await this.repository.findOne(id);
 
     if (!company) {
@@ -46,12 +38,6 @@ export class CompanyService {
   }
 
   async update(id: string, updateCompanyInput: UpdateCompanyInput) {
-    const isObjectId = isMongoId(id);
-
-    if (!isObjectId) {
-      throw new BadRequestException('Mongo ID is invalid');
-    }
-
     const company = await this.repository.findOne(id);
 
     if (!company) {
@@ -62,12 +48,6 @@ export class CompanyService {
   }
 
   async remove(id: string) {
-    const isObjectId = isMongoId(id);
-
-    if (!isObjectId) {
-      throw new BadRequestException('Mongo ID is invalid');
-    }
-
     const company = await this.repository.findOne(id);
 
     if (!company) {
