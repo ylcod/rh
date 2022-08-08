@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateOccupationInput } from '../dto/create-occupation.input';
+import { UpdateOccupationInput } from '../dto/update-occupation.input'
 
 @Injectable()
 export class OccupationRepository {
@@ -11,6 +12,13 @@ export class OccupationRepository {
       data: {
         ...createOccupationInput,
       },
+    });
+  }
+
+  async update(id: string, { code, name, description}: UpdateOccupationInput) {
+    return this.prisma.occupation.update({
+      where: { id },
+      data: { code, name, description },
     });
   }
 

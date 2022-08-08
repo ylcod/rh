@@ -15,6 +15,6 @@ export class OccupationEntity implements Occupation {
   @Field(() => String)
   description: string;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   companyId: string;
 }

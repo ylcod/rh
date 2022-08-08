@@ -13,14 +13,14 @@ type OccupationEntity {
   name: String!
   code: String!
   description: String!
-  companyId: String!
+  companyId: String
 }
 
 type Query {
   allCompanies: [CompanyEntity!]!
-  company(id: String!): CompanyEntity!
+  getCompany(id: String!): CompanyEntity!
   allOccupations: [OccupationEntity!]!
-  occupation(id: String!): OccupationEntity!
+  getOccupation(id: String!): OccupationEntity!
 }
 
 type Mutation {
@@ -28,6 +28,7 @@ type Mutation {
   updateCompany(updateCompanyInput: UpdateCompanyInput!): CompanyEntity!
   removeCompany(id: String!): CompanyEntity!
   createOccupation(createOccupationInput: CreateOccupationInput!): OccupationEntity!
+  updateOccupation(updateOccupationInput: UpdateOccupationInput!): OccupationEntity!
   removeOccupation(id: String!): OccupationEntity!
 }
 
@@ -49,4 +50,14 @@ input CreateOccupationInput {
   description: String!
   code: String!
   companyId: String!
+}
+
+input UpdateOccupationInput {
+  name: String
+  description: String
+  code: String
+  companyId: String
+
+  """Occupation ID"""
+  id: String!
 }

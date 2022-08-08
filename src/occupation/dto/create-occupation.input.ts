@@ -1,5 +1,5 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { IsNotEmpty, MaxLength } from 'class-validator';
+import { IsMongoId, IsNotEmpty, MaxLength } from 'class-validator';
 
 @InputType()
 export class CreateOccupationInput {
@@ -16,5 +16,6 @@ export class CreateOccupationInput {
   code: string;
 
   @Field(() => String)
+  @IsMongoId()
   companyId: string
 }
