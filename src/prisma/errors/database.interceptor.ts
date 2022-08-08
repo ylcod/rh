@@ -39,6 +39,7 @@ export class DatabaseInterceptor implements NestInterceptor {
   private handleDatabaseErrors(err: PrismaClientError): Error {
     enum PrismaErrorsCode {
       InconsistentColumnData = 'P2023',
+      uniqueConstraint = 'P2002',
     }
 
     switch (err.code) {

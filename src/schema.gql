@@ -8,15 +8,27 @@ type CompanyEntity {
   name: String!
 }
 
+type OccupationEntity {
+  id: String!
+  name: String!
+  code: String!
+  description: String!
+  companyId: String!
+}
+
 type Query {
   allCompanies: [CompanyEntity!]!
   company(id: String!): CompanyEntity!
+  allOccupations: [OccupationEntity!]!
+  occupation(id: String!): OccupationEntity!
 }
 
 type Mutation {
   createCompany(createCompanyInput: CreateCompanyInput!): CompanyEntity!
   updateCompany(updateCompanyInput: UpdateCompanyInput!): CompanyEntity!
   removeCompany(id: String!): CompanyEntity!
+  createOccupation(createOccupationInput: CreateOccupationInput!): OccupationEntity!
+  removeOccupation(id: String!): OccupationEntity!
 }
 
 input CreateCompanyInput {
@@ -30,4 +42,11 @@ input UpdateCompanyInput {
 
   """Company ID"""
   id: String!
+}
+
+input CreateOccupationInput {
+  name: String!
+  description: String!
+  code: String!
+  companyId: String!
 }
