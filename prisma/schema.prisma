@@ -11,7 +11,18 @@ datasource db {
 }
 
 model Company {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  cnpj String @unique
-  name String
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  cnpj       String       @unique
+  name       String
+  Occupation Occupation[]
+}
+
+model Occupation {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  code        String @unique
+  name        String
+  description String
+
+  company   Company? @relation(fields: [companyId], references: [id])
+  companyId String?  @db.ObjectId
 }

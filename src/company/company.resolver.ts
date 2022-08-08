@@ -20,7 +20,7 @@ export class CompanyResolver {
     return this.companyService.findAll();
   }
 
-  @Query(() => CompanyEntity, { name: 'company' })
+  @Query(() => CompanyEntity, { name: 'getCompany' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.companyService.findOne(id);
   }
